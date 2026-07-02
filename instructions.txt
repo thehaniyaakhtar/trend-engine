@@ -49,9 +49,9 @@ Update last_id so next xread fetches only newer posts
 Reapeat forever
 
 Step 6: window_aggregator.py
-Creating a dictionary for every different #
-Passing a function that for every #, posts, likes comments and shares are stored (current_window)
+Creating a dictionary for every different # using defaultdict
+a function that stores posts, likes ,comments, shares for each # (current_window)
 for loop creates iterations for one # at a time
-row = {..} creates one record that weventually becomes one row in ML dataset
-aggregate all the hashtag + related info into rows
-store in csv
+row = {..} creates one record/one row in ML dataset
+append all rows to windows_history, clear current_window to start the next time window
+export windows_history to csv using pd

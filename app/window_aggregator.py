@@ -1,10 +1,12 @@
 import time
 from collections import defaultdict
-# defaultdict enables creation of a new dict when new # is seen
+# defaultdict enables creation of a new dict when new #/key is seen
 from datetime import datetime
+# stores timestamps
 import pandas as pd
 
-WINDOW_SIZE = 60
+WINDOW_SIZE = 60 # seconds 
+# each stat lasts for 60 seconds
 
 # Store stats for CURRENT time window
 # defaultdict automatically creates a new dict wnv a new # is encountered
@@ -17,8 +19,10 @@ current_window = defaultdict(
     }
 )
 
-# Stores the finalized windows which is later replaced with CSV
+# Stores the completed windows which is later replaced with CSV
 window_history = []
+
+window_start = time.time()
 
 def update_window(post):
     # update the stats for current window using newly received post
@@ -31,7 +35,7 @@ def update_window(post):
     # Redis returns string so convert to integer
     current_window[hashtag]["likes"] += int(post["likes"])
     current_window[hashtag]["comments"] += int(post["comments"])
-    current_window[hashtag]["shares"] += int(post("shares"))
+    current_window[hashtag]["shares"] += int(post["shares"])
     
 def finalize_window():
     # Creates one snapshot of the current time window
@@ -59,19 +63,23 @@ def finalize_window():
     current_window.clear()
         
 
-# process incoming posts
+# process incoming osts
 def process_post(post):
-    
     # called once for every post received by the consumer
+    
     global window_start
-    # you want the one defined at  top of the file
+    # you want the one defined at top of the file
+    
     update_window(post)
-    # update counters when a new post arrives
+    # update counters of # when a new post arrives
+    
     current_time = time.time()
+    # gets current time
     if current_time - window_start >= WINDOW_SIZE:
+        # Has one minute passed?
         print("\nWindow finalized\n")
         finalize_window()
-        window_start = current_time
+        window_start = current_time # Start a new timer
 
 def export_dataframe():
     # Convert all completed windows into a pandas df
