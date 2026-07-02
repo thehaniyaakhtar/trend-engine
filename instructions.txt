@@ -61,3 +61,11 @@ Creating features like time and lag feature to record activity
 Defining metrics like growth rate, MA, engagement rate, trend score
 Handling missing values
 exporting to dataset
+
+Phase 4: Training model to make forecasts
+Import dataset
+Renaming columns to Prophets requirements
+Choose big enough datasets
+Set timeframe of 60 seconds
+Train model, a new model for each #, since each # has a different behavior
+Combining forecasts
