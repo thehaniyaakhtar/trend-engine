@@ -55,3 +55,9 @@ for loop creates iterations for one # at a time
 row = {..} creates one record/one row in ML dataset
 append all rows to windows_history, clear current_window to start the next time window
 export windows_history to csv using pd
+
+Phase 3: Feature Engineering
+Creating features like time and lag feature to record activity
+Defining metrics like growth rate, MA, engagement rate, trend score
+Handling missing values
+exporting to dataset

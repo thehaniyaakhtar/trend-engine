@@ -5,7 +5,7 @@ from datetime import datetime
 # stores timestamps
 import pandas as pd
 
-WINDOW_SIZE = 60 # seconds 
+WINDOW_SIZE = 10 # seconds 
 # each stat lasts for 60 seconds
 
 # Store stats for CURRENT time window
