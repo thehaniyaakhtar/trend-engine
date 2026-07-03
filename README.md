@@ -1,7 +1,6 @@
-# Trend Engine – Real-Time Social Media Trend Analytics
+# PulseStream AI: Real-Time Social Media Trend Intelligence Platform
 
 ## Overview
-
 Trend Engine is a real-time analytics platform that simulates social media activity, processes streaming events using Redis Streams, performs feature engineering, forecasts future trend scores using Prophet, and visualizes insights through an interactive Streamlit dashboard.
 
 The project demonstrates an end-to-end data engineering and machine learning workflow, covering synthetic data generation, stream processing, window-based aggregation, predictive analytics, and business intelligence visualization.
