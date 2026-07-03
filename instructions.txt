@@ -13,6 +13,7 @@ social-trend-engine/
 ├── app/
 │ ├── producer.py
 │ └── consumer.py
+| └── literall all other files 
 ├── requirements.txt
 └── README.md
 
@@ -76,9 +77,23 @@ Combining forecasts, save and print
 Phase 5: analytics.py
 Trend Ranking + Anomaly Detection
 Loading data
-keeping only latest observed forecasts and metrics for each #
-merging everything
+Convert timestamps into dateframe format
+Select the latest record for each hashtag.
+Select the first future prediction for each hashtag.
+Merge current data with forecast data.
+Fill missing forecast values with 0.
+Compute the forecast error (actual posts − predicted posts).
+Detect anomalies when the error exceeds 30% of the prediction.
+Normalize important features using Min-Max Scaling.
+Calculate a weighted Trend Rank Score.
+Classify each hashtag as Rising, Falling, or Stable.
+Rank hashtags from highest to lowest trend score.
+Round numeric values for readability.
+Save the final results to data/insights.csv and print the ranked hashtags.
+
 
 Phase 5: Dashboard.py
 Streamlit Dashboard
 Literally just AI generated
+
+Phase 6: Running the code
