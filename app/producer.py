@@ -74,7 +74,7 @@ def generate_user():
         "user_id": fake.uuid4(),
         "user_type": user_type,
         "followers": random.randint(*profile["followers"]),
-        "verified": profile["verified"],
+        "verified": str(profile["verified"]),
         "country": fake.country()
     }
 
@@ -151,6 +151,10 @@ def generate_engagement(user, content):
     comments = int(likes * random.uniform(0.05, 0.15))
     shares = int(likes * random.uniform(0.02, 0.10))
     
+    impressions = int(
+        likes * random.uniform(2.0, 6.0)
+    )
+    
     return{
         "likes": likes,
         "comments": comments,
@@ -186,6 +190,7 @@ def stream_posts():
         
         # Add post to Redis stream
         # xadd() retrned the ID assigned by Redis
+        post = {k: str(v) for k, v in post.items()}
         stream_id = redis_client.xadd(
             STREAM_NAME,
             post

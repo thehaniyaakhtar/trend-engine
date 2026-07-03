@@ -4,3 +4,4 @@ faker
 prophet
 streamlit 
 plotly
+streamlit_autorefresh

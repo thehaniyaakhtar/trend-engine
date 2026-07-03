@@ -97,3 +97,5 @@ Streamlit Dashboard
 Literally just AI generated
 
 Phase 6: Running the code
+Step 1: Start Redis
+docker compose up -d (make sure the port connects via docker)

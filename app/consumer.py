@@ -1,7 +1,7 @@
 import redis
 
 # import function that updates hashtag stats + dictionary that stores aggregated results
-from aggregator import update_summary, trend_summary
+from window_aggregator import process_post, current_window
 from window_aggregator import process_post
 
 # Redis connection
@@ -40,14 +40,18 @@ def consume_posts():
             # (stream_id, post_dictionary)
             for stream_id, post in events:
                 # Update hashatg stats using this post
-                process_post(post)
+                window_completed = process_post(post)
+
+                if window_completed:
+                    from window_aggregator import export_csv
+                    export_csv("data/trend_dataset.csv")
                 
                 # print the latest aggregateed stats
                 print("\nCurrent Trend Summary")
                 print("-" * 30)
                 
                 # Loop through every hashtag collected so far
-                for hashtag, stats in trend_summary.items():
+                for hashtag, stats in current_window.items():
                     print(
                         f"{hashtag} | "
                         f"Posts: {stats['posts']} | "

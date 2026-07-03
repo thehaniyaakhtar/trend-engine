@@ -98,10 +98,12 @@ def process_post(post):
     current_time = time.time()
     # gets current time
     if current_time - window_start >= WINDOW_SIZE:
-        # Has one minute passed?
         print("\nWindow finalized\n")
         finalize_window()
-        window_start = current_time # Start a new timer
+        window_start = current_time
+        return True
+
+    return False
 
 def export_dataframe():
     # Convert all completed windows into a pandas df
