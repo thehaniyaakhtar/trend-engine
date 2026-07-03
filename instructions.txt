@@ -99,3 +99,9 @@ Literally just AI generated
 Phase 6: Running the code
 Step 1: Start Redis
 docker compose up -d (make sure the port connects via docker)
+run app\producer.py
+run app\consumer.py
+Generate engineered features: run app\feature_engineering.py
+Generate forecasts: run app\forecast.py
+Generate Analytics: run app\analytics.py
+Launch Dashboard: run app\dashboard.py
